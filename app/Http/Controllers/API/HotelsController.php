@@ -3,9 +3,6 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use JWTAuth;
-use App\User;
-use JWTAuthException;
 use DB;
 
 class HotelsController extends Controller
@@ -24,28 +21,30 @@ class HotelsController extends Controller
 
 
         $rooms = DB::table('rooms as a')
-        ->select('a.id','a.name','b.company','c.name as provinces','a.price','a.count','a.description','a.status','a.type','a.created_at')
+        ->select('a.id','a.name','b.company','c.name as provinces','a.price','a.count','a.status','a.type','a.created_at')
         ->join('users as b','b.id','=','a.user_id')
         ->join('provinces as c','c.id','=','a.provinces_id')
         ->get();
 
 
-         $jml = count($rooms);
-         for($i=0; $i<$jml; $i++)
-         {
+        return response()->json(['status'=>true,'message'=>'Rooms hotels successfully','data'=>$rooms]);
+  
+     }
 
-        $data[$i]['id'] = $rooms[$i]->id;
-        $data[$i]['company'] = $rooms[$i]->company;
-        $data[$i]['room'] = $rooms[$i]->name;
-        $data[$i]['provinces'] = $rooms[$i]->provinces;
-        $data[$i]['price'] = $this->rupiah($rooms[$i]->price);
-        $data[$i]['count'] = $rooms[$i]->count;
-        $data[$i]['description'] = $rooms[$i]->description;
-        $data[$i]['status'] = $rooms[$i]->status;
-        $data[$i]['publish'] = $this->time_since(strtotime($rooms[$i]->created_at));
-         }
+      public function detail($id,Request $request)
+     {
 
-        return response()->json(['status'=>true,'message'=>'Rooms hotels successfully','data'=>$data]);
+
+
+        $rooms = DB::table('rooms as a')
+        ->select('a.id','a.name','b.company','c.name as provinces','a.price','a.count','a.description','a.status','a.type','a.created_at')
+        ->join('users as b','b.id','=','a.user_id')
+        ->join('provinces as c','c.id','=','a.provinces_id')
+        ->where('a.id',$id)
+        ->get();
+
+
+        return response()->json(['status'=>true,'message'=>'Rooms hotels successfully','data'=>$rooms]);
   
      }
 
@@ -101,7 +100,7 @@ class HotelsController extends Controller
         }else{
                 
          $rooms = DB::table('rooms as a')
-        ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.description','a.status','a.type','a.created_at')
+        ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.status','a.type','a.created_at')
         ->join('users as b','b.id','=','a.user_id')
         ->join('provinces as c','c.id','=','a.provinces_id')
         ->where(['c.name'=> $city,'a.price'=>$price])
@@ -128,7 +127,7 @@ class HotelsController extends Controller
             {
 
                 $rooms = DB::table('rooms as a')
-                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.description','a.status','a.type','a.created_at')
+                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.status','a.type','a.created_at')
                 ->join('users as b','b.id','=','a.user_id')
                 ->join('provinces as c','c.id','=','a.provinces_id')
                 ->where('b.company', 'like', ''.$search.'%')
@@ -139,7 +138,7 @@ class HotelsController extends Controller
             }else{
                 //jika di isi price
                     $rooms = DB::table('rooms as a')
-            ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.description','a.status','a.type','a.created_at')
+            ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.status','a.type','a.created_at')
             ->join('users as b','b.id','=','a.user_id')
             ->join('provinces as c','c.id','=','a.provinces_id')
             ->where('a.price', $price)
@@ -154,7 +153,7 @@ class HotelsController extends Controller
 
             //jika di isi city
               $rooms = DB::table('rooms as a')
-            ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.description','a.status','a.type','a.created_at')
+            ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.status','a.type','a.created_at')
             ->join('users as b','b.id','=','a.user_id')
             ->join('provinces as c','c.id','=','a.provinces_id')
             ->where(['c.name'=> $city,'a.price'=>$price])
@@ -182,7 +181,7 @@ class HotelsController extends Controller
             {
 
                      $rooms = DB::table('rooms as a')
-                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.description','a.status','a.type','a.created_at')
+                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.status','a.type','a.created_at')
                 ->join('users as b','b.id','=','a.user_id')
                 ->join('provinces as c','c.id','=','a.provinces_id')
                 ->where('a.name', 'like', ''.$search.'%')
@@ -192,7 +191,7 @@ class HotelsController extends Controller
 
                  //jika di isi price   
                    $rooms = DB::table('rooms as a')
-                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.description','a.status','a.type','a.created_at')
+                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.status','a.type','a.created_at')
                 ->join('users as b','b.id','=','a.user_id')
                 ->join('provinces as c','c.id','=','a.provinces_id')
                 ->where('a.price', $price)
@@ -204,7 +203,7 @@ class HotelsController extends Controller
              //jika di isi city
 
                 $rooms = DB::table('rooms as a')
-                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.description','a.status','a.type','a.created_at')
+                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.status','a.type','a.created_at')
                 ->join('users as b','b.id','=','a.user_id')
                 ->join('provinces as c','c.id','=','a.provinces_id')
                 ->where(['c.name'=> $city])
@@ -226,7 +225,7 @@ class HotelsController extends Controller
             {    
           
              $rooms = DB::table('rooms as a')
-                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.description','a.status','a.type','a.created_at')
+                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.status','a.type','a.created_at')
                 ->join('users as b','b.id','=','a.user_id')
                 ->join('provinces as c','c.id','=','a.provinces_id')
                 ->where('c.name', 'like', ''.$city.'%')
@@ -249,7 +248,7 @@ class HotelsController extends Controller
         {
           
              $rooms = DB::table('rooms as a')
-                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.description','a.status','a.type','a.created_at')
+                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.status','a.type','a.created_at')
                 ->join('users as b','b.id','=','a.user_id')
                 ->join('provinces as c','c.id','=','a.provinces_id')
                 ->where('a.price', 'like', ''.$price.'%')
@@ -278,7 +277,7 @@ class HotelsController extends Controller
 
 
          $rooms = DB::table('rooms as a')
-                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.description','a.status','a.type','a.created_at')
+                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.status','a.type','a.created_at')
                 ->join('users as b','b.id','=','a.user_id')
                 ->join('provinces as c','c.id','=','a.provinces_id')
                 ->where('a.price', $price)
@@ -288,7 +287,7 @@ class HotelsController extends Controller
          }else if(empty($price)){
 
             $rooms = DB::table('rooms as a')
-                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.description','a.status','a.type','a.created_at')
+                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.status','a.type','a.created_at')
                 ->join('users as b','b.id','=','a.user_id')
                 ->join('provinces as c','c.id','=','a.provinces_id')
                 ->where('a.name', $name)
@@ -297,7 +296,7 @@ class HotelsController extends Controller
          }else{
 
               $rooms = DB::table('rooms as a')
-                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.description','a.status','a.type','a.created_at')
+                ->select('a.id','a.name','b.company','c.name as city','a.price','a.count','a.status','a.type','a.created_at')
                 ->join('users as b','b.id','=','a.user_id')
                 ->join('provinces as c','c.id','=','a.provinces_id')
                 ->where(['a.name'=> $name,'a.price'=> $price])

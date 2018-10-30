@@ -36,6 +36,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 
 //pengguna
     Route::get('hotels', 'HotelsController@index');
+    Route::get('hotels/{id}', 'HotelsController@detail');
     Route::post('hotels/search', 'HotelsController@search');
     Route::post('hotels/filter', 'HotelsController@filterattribut');
 

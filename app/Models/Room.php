@@ -19,12 +19,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Room extends Model
 {
-    use SoftDeletes;
+    //use SoftDeletes;
 
     public $table = 'rooms';
     
 
-    protected $dates = ['deleted_at'];
+    //protected $dates = ['deleted_at'];
 
 
     public $fillable = [

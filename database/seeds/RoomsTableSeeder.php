@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\Room;
 use Illuminate\Database\Seeder;
 
@@ -13,7 +14,7 @@ class RoomsTableSeeder extends Seeder
     {
 
       Room::insert([
-            'user_id' => '2',
+            'user_id' => '1',
             'provinces_id' => '1',
             'name' => 'kanthil',
             'price' => '250000',
@@ -25,7 +26,7 @@ class RoomsTableSeeder extends Seeder
         ]);
 
       Room::insert([
-            'user_id' => '2',
+            'user_id' => '1',
             'provinces_id' => '1',
             'name' => 'kamboja',
             'price' => '750000',
@@ -38,7 +39,7 @@ class RoomsTableSeeder extends Seeder
 
 
        Room::insert([
-            'user_id' => '2',
+            'user_id' => '1',
             'provinces_id' => '2',
             'name' => 'mawar',
             'price' => '750000',
@@ -51,7 +52,7 @@ class RoomsTableSeeder extends Seeder
 
 
         Room::insert([
-            'user_id' => '2',
+            'user_id' => '1',
             'provinces_id' => '1',
             'name' => 'melati',
             'price' => '1000000',
@@ -63,7 +64,7 @@ class RoomsTableSeeder extends Seeder
         ]);
 
         Room::insert([
-            'user_id' => '2',
+            'user_id' => '1',
             'provinces_id' => '2',
             'name' => 'anggrek',
             'price' => '1500000',
