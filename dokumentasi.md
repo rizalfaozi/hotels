@@ -150,6 +150,7 @@ contoh :
 - perhatian semua  menggunakan akses token jwt
 - harus login sebagai pemilik
 - header : Authorization bearer { token }
+- count = jumlah kamar
 
 - url : http://url/api/rooms
 - type : get
@@ -170,6 +171,7 @@ contoh :
 "name":"kanthil",
 "type":"standart",
 "status":"1",
+"count":"3",
 "price":"25000",
 "description":"tes standart"
 
@@ -180,6 +182,7 @@ contoh :
 - perhatian semua  menggunakan akses token jwt
 - harus login sebagai pemilik
 - header : Authorization bearer { token }
+- count = jumlah kamar
 
 - url : http://url/api/rooms/update/id
 - type : post
@@ -190,6 +193,7 @@ contoh :
 "provinces_id":"1",
 "name":"cempaka",
 "type":"deluxe",
+"count":"3",
 "status":"1",
 "price":"25000",
 "description":"tes deluxe"
