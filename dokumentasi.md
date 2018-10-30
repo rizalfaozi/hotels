@@ -2,20 +2,20 @@
 #perhatian semua inputan harus berupa data json
 
 contoh :
--------------------------------------
--									-
--	 {								-
--									-
--	"email":"pemilik@gmail.com",	-
--	"name":"pemilik",				-
--	"password":"admin123"			-		
--									-
--	}								-
--									-
--									-
--------------------------------------
 
----------- PENGGUNA ----------------------------------------------------
+									
+	{								
+									
+	"email":"pemilik@gmail.com",	
+	"name":"pemilik",				
+	"password":"admin123"					
+									
+	}								
+									
+									
+
+
+----------------------------PENGGUNA----------------------------------
 
 
 #register pengguna
@@ -108,7 +108,10 @@ header : Authorization bearer { token }
 
 
 
---------------------------- PEMILIK --------------------------------------
+--------------------------------PEMILIK-----------------------------------
+
+
+
 #register pemilik
 
 url : http://url/api/auth/regpemilik

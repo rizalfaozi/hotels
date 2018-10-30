@@ -22,3 +22,10 @@ laravel versi 5.6 support dengan php5
 - php artisan jwt:generate
 
 
+#dokumentasi Rest-api ada di file
+
+- dokumentasi.md
+
+- https://github.com/rizalfaozi/hotels/blob/master/dokumentasi.md
+
+
