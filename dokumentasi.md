@@ -20,8 +20,8 @@ contoh :
 
 #register pengguna
 
-url : http://url/api/auth/regpengguna
-type : post
+- url : http://url/api/auth/regpengguna
+- type : post
 
 contoh :
 
@@ -36,8 +36,8 @@ contoh :
 
 #untuk login
 
-url : http://url/api/auth/login
-type : post
+- url : http://url/api/auth/login
+- type : post
 
 
 contoh :
@@ -51,25 +51,28 @@ contoh :
 
 
 #pencarian 
-pencarian berdasarkan nama kamar / nama hotel , kota dan harga
 
-url : http://url/api/hotels/search
-type : post
+- pencarian berdasarkan nama kamar / nama hotel , kota dan harga
+
+- url : http://url/api/hotels/search
+- type : post
 
 contoh :
 
 {
+
 "search":"kamboja",
 "price":"750000",
 "city":"Yogyakarta"
+
 }
 
 #filter
 
 pengururutan data berdasarkan harga dan nama kamar jumlah yang masih ready 
 
-url : http://url/api/hotels/filter
-type : post
+- url : http://url/api/hotels/filter
+- type : post
 
 contoh :
 
@@ -82,8 +85,8 @@ contoh :
 
 #detail kamar
 
-url : http://url/api/hotels/id
-type : get
+- url : http://url/api/hotels/id
+- type : get
 
 
 
@@ -95,9 +98,9 @@ type : get
   bulan terahir menggunakan chat kridit 
 - sistem membaca bulan terbaru ketika terahir menggunakan chat kridit (descending)
 
-url : http://url/api/credits/chat
-type : post
-header : Authorization bearer { token }
+- url : http://url/api/credits/chat
+- type : post
+- header : Authorization bearer { token }
 
 {
 
@@ -114,8 +117,8 @@ header : Authorization bearer { token }
 
 #register pemilik
 
-url : http://url/api/auth/regpemilik
-type : post
+- url : http://url/api/auth/regpemilik
+- type : post
 
 contoh :
 
@@ -129,8 +132,8 @@ contoh :
 
 #untuk login
 
-url : http://url/api/auth/login
-type : post
+- url : http://url/api/auth/login
+- type : post
 
 
 contoh :
@@ -143,13 +146,22 @@ contoh :
 }
 
 #semua list kamar room
-url : http://url/api/rooms
-type : get
+
+- perhatian semua  menggunakan akses token jwt
+- harus login sebagai pemilik
+- header : Authorization bearer { token }
+
+- url : http://url/api/rooms
+- type : get
 
 #insert kamar room
 
-url : http://url/api/rooms/insert
-type : post
+- perhatian semua  menggunakan akses token jwt
+- harus login sebagai pemilik
+- header : Authorization bearer { token }
+
+- url : http://url/api/rooms/insert
+- type : post
 
 {
 
@@ -165,8 +177,12 @@ type : post
 
 #update kamar room
 
-url : http://url/api/rooms/update/id
-type : post
+- perhatian semua  menggunakan akses token jwt
+- harus login sebagai pemilik
+- header : Authorization bearer { token }
+
+- url : http://url/api/rooms/update/id
+- type : post
 
 {
 
@@ -183,7 +199,11 @@ type : post
 
 #delete kamar room	
 
-url : http://url/api/rooms/destroy/id
-type : delete	
+- perhatian semua  menggunakan akses token jwt
+- harus login sebagai pemilik
+- header : Authorization bearer { token }
+
+- url : http://url/api/rooms/destroy/id
+- type : delete	
 
 
