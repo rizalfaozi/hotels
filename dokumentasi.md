@@ -165,7 +165,7 @@ contoh :
 
 {
 
-"user_id":"2",
+"user_id":"1",
 "provinces_id":"1",
 "name":"kanthil",
 "type":"standart",
@@ -186,7 +186,7 @@ contoh :
 
 {
 
-"user_id":"2",
+"user_id":"1",
 "provinces_id":"1",
 "name":"cempaka",
 "type":"deluxe",
