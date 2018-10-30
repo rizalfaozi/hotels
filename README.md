@@ -1,6 +1,6 @@
 # Laravel-API-REST-Hotel
 
-Laravel Rest Api ini diperuntukan untuk membuat rest api untuk  
+Laravel Rest Api ini diperuntukan untuk hotel sederhana  
 rest api berupa data json menggunakan tehnology jwt
 laravel versi 5.6 support dengan php5
 
@@ -11,18 +11,11 @@ composer install
 #setting env
 sesuaikan nama database, username dan passwordnya
 
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=mamikos
-DB_USERNAME=root
-DB_PASSWORD=admin123
+#migration & seeder
+php artisan migrate:refresh --seed
 
 #seeting jwt
 php artisan jwt:generate
-
-
-#migration & seeder
 
 
 
